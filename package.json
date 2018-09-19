@@ -1,0 +1,9 @@
+{
+  "name": "mg-image-processor",
+  "version": "0.0.1",
+  "private": true,
+  "dependencies": {
+    "express": "^4.16.3",
+    "nano": "^7.1.0"
+  }
+}
