@@ -39,8 +39,12 @@ app.get('/', (req, res) => {
 })
 
 app.post('/teams', (req, res) => {
-    //res.json({success: true})
-    res.json(req.body)
+    let teamsDb = nano.use('teams');
+
+    // can add pass a key as the second param
+    teamsDb.insert(req.body)
+        .then(result => res.send(result))
+        .catch(err => res.send(err))
 });
 
 app.listen(port, () => console.log(`Example app listening on port ${port}!`))
