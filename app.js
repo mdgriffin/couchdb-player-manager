@@ -38,6 +38,16 @@ app.get('/', (req, res) => {
     res.send('Hello World')
 })
 
+app.get('/teams', (req, res) => {
+    let teamsDb = nano.use('teams');
+
+    teamsDb.list({include_docs: true}).then((body) => {
+        let teams = [];
+        body.rows.forEach((doc) => teams.push(doc))
+        res.json(teams);
+      });
+})
+
 app.post('/teams', (req, res) => {
     let teamsDb = nano.use('teams');
 
@@ -45,6 +55,6 @@ app.post('/teams', (req, res) => {
     teamsDb.insert(req.body)
         .then(result => res.send(result))
         .catch(err => res.send(err))
-});
+})
 
 app.listen(port, () => console.log(`Example app listening on port ${port}!`))
