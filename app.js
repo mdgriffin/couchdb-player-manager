@@ -32,4 +32,19 @@ app.post('/teams', (req, res) => {
         .catch(err => res.send(err))
 })
 
+app.delete('/teams/:teamId', (req, res) => {
+    let teamsDb = nano.use('teams');
+
+    teamsDb.get(req.params.teamId).then((body) => {
+        teamsDb
+            .destroy(body._id, body._rev)
+            .then((resukt) => {
+                res.send(result)
+            })
+            .catch(err => {
+                res.send(err);
+            })
+      });
+})
+
 app.listen(port, () => console.log(`Example app listening on port ${port}!`))
