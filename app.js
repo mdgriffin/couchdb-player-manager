@@ -12,6 +12,8 @@ app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true }))
 app.set('view engine', 'pug')
 app.set('views', './app/views')
+app.use(express.static('dist'))
+
 
 // http://localhost:5984/_utils/
 
