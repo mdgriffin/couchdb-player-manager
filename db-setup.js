@@ -1,13 +1,15 @@
 const csv = require("csvtojson");
 const nano = require("nano")("http://localhost:5984");
 const clubsDb = nano.use("clubs");
+const playersDb = nano.use("players")
 
 const csvFilePath = "player_dataset.csv";
 
 csv()
   .fromFile(csvFilePath)
   .then(data => {
-    insertBulk(data);
+    //insertBulk(data);
+    insertPlayers(data)
   });
 
 function insertBulk (data) {
@@ -32,7 +34,13 @@ function insertBulk (data) {
     docs.push(clubs[key]);
   })
 
-  clubsDb.bulk({docs:docs}).then((body) => {
+  clubsDb.bulk({docs: docs}).then((body) => {
+    console.log(body);
+  });
+}
+
+function insertPlayers (players) {
+  playersDb.bulk({docs: players}).then((body) => {
     console.log(body);
   });
 }
