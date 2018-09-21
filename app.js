@@ -8,6 +8,7 @@ const bodyParser = require('body-parser')
 const multer = require('multer')
 const upload = multer()
 const clubsDb = nano.use("clubs");
+const playersDb = nano.use("players");
 
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true }))
@@ -22,6 +23,20 @@ app.get('/', (req, res) => {
     res.render('index', { title: 'Hey', message: 'Hello there!' })
 })
 
+app.get('/players', (req, res) => {
+    playersDb.find({
+        selector: {
+            'Name': { "$ne": "Brian"}
+          },
+        limit: 50
+    })
+    .then((result) => {
+        res.json(result.docs)
+    })
+    .catch(err => {
+        console.log(err);
+    })
+})
 
 app.get('/clubs', (req, res) => {
 
