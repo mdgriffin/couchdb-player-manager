@@ -7,6 +7,7 @@ const pug = require('pug');
 const bodyParser = require('body-parser')
 const multer = require('multer')
 const upload = multer()
+const clubsDb = nano.use("clubs");
 
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true }))
@@ -22,31 +23,32 @@ app.get('/', (req, res) => {
 })
 
 
-app.get('/teams', (req, res) => {
-    let teamsDb = nano.use('teams')
+app.get('/clubs', (req, res) => {
 
-    teamsDb.list({include_docs: true}).then((body) => {
-        let teams = []
-        body.rows.forEach((doc) => teams.push(doc))
-        res.json(teams)
-    });
+    clubsDb.list({include_docs: true})
+    .then((body) => {
+        let clubs = []
+        body.rows.forEach((doc) => clubs.push(doc))
+        res.json(clubs)
+    })
+    .catch(err => {
+        console.log(err);
+    })
 })
 
-app.post('/teams', (req, res) => {
-    let teamsDb = nano.use('teams')
+app.post('/clubs', (req, res) => {
 
     // can add pass a key as the second param
-    teamsDb
+    clubsDb
         .insert(req.body)
         .then(result => res.send(result))
         .catch(err => res.send(err))
 })
 
-app.delete('/teams/:teamId', (req, res) => {
-    let teamsDb = nano.use('teams')
+app.delete('/clubs/:teamId', (req, res) => {
 
-    teamsDb.get(req.params.teamId).then((body) => {
-        teamsDb
+    clubsDb.get(req.params.teamId).then((body) => {
+        clubsDb
             .destroy(body._id, body._rev)
             .then((result) => {
                 res.send(result)
