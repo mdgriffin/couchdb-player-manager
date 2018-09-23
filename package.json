@@ -3,7 +3,8 @@
   "version": "0.0.1",
   "private": true,
   "scripts": {
-    "build": "webpack"
+    "build": "webpack",
+    "auto-build": "webpack --watch"
   },
   "dependencies": {
     "body-parser": "^1.18.3",
