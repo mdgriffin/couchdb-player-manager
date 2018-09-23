@@ -8,9 +8,7 @@
 </template>
 
 <script>
-import {fetchTeams} from '../api/players-api'
-import PouchDB from 'pouchdb';
-const playersDb = new PouchDB('http://localhost:5984/players');
+import {getPlayers} from '../db/players-db'
 
 export default {
   name: 'list-players-view',
@@ -25,7 +23,8 @@ export default {
     players () {
       let self = this
       return new Promise((resolve, reject) => {
-        playersDb.allDocs({include_docs: true})
+        //playersDb.allDocs({include_docs: true})
+        getPlayers()
         .then(result => {
           
           let filteredPlayers = result.rows.slice(self.startPlayerIndex, self.startPlayerIndex + self.numPlayerPerPage - 1).reduce((prev, curr, currIndex) => {
