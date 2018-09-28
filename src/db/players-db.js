@@ -41,9 +41,27 @@ export function deletePlayer (playerId, playerRev) {
 }
 
 export function getClubs () {
-    return db.query('player-views/clubs', {reduce: true, group: true})
+    return new Promise((resolve, reject) => {
+        return db.query('player-views/clubs', {reduce: true, group: true})
+            .then(res => {
+                resolve(res.rows)
+            })
+            .catch(err => reject(err))
+    })
+    
 }
 
 export function getPlayersByClub (clubName) {
-    return db.query('player-views/club-players', {key: clubName})
+    return new Promise ((resolve, reject) => {
+        db.query('player-views/club-players', {key: clubName})
+            .then(result => {
+                let players = result.rows.reduce((acc, curr) => {
+                    acc.push(curr.value)
+                    return acc
+                }, [])
+
+                resolve(players);
+            })
+            .catch(err => reject(err))
+    })
 }

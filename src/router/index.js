@@ -5,6 +5,7 @@ const PlayerView = () => import('../views/PlayerView.vue')
 const CreatePlayerView = () => import('../views/CreatePlayerView.vue')
 const UpdatePlayerView = () => import('../views/UpdatePlayerView.vue')
 const ListClubsView = () => import('../views/ListClubsView.vue')
+const ClubView = () => import('../views/ClubView.vue')
 
 Vue.use(Router)
 
@@ -17,7 +18,8 @@ export function createRouter () {
       { path: '/players/:id/edit', component: UpdatePlayerView },
       { path: '/players/:id', component: PlayerView },
       { path: '/new-player', component: CreatePlayerView },
-      { path: '/clubs', component: ListClubsView }
+      { path: '/clubs', component: ListClubsView },
+      { path: '/clubs/:id', component: ClubView }
     ]
   })
 }
