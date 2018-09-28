@@ -2,37 +2,37 @@
   <div class="createPlayer">
     <h2>Add Player</h2>
     <alert v-bind:show="showAlert" @close="closeAlert">Player Created Successfully</alert>
-    <div>
-        <label>Name</label>
-        <input type="text" v-model="name" />
+    <div class="form-group">
+        <label class="form-label">Name</label>
+        <input type="text" class="form-input" v-model="name" />
     </div>
-    <div>
-        <label>Age</label>
-        <input type="text" v-model="age" />
+    <div class="form-group">
+        <label class="form-label">Age</label>
+        <input type="text" class="form-input" v-model="age" />
     </div>
-    <div>
-        <label>Nationality</label>
-        <input type="text" v-model="nationality" />
+    <div class="form-group">
+        <label class="form-label">Nationality</label>
+        <input type="text" class="form-input" v-model="nationality" />
     </div>
-    <div>
-        <label>Club</label>
-        <input type="text" v-model="club" />
+    <div class="form-group">
+        <label class="form-label">Club</label>
+        <input type="text" class="form-input" v-model="club" />
     </div>
-    <div>
-        <label>Overall</label>
-        <input type="text" v-model="overall" />
+    <div class="form-group">
+        <label class="form-label">Overall</label>
+        <input type="number" class="form-input" min="0" max="100" placeholder="0-100" v-model="overall" />
     </div>
-    <div>
-        <label>Potential</label>
-        <input type="text" v-model="potential" />
+    <div class="form-group">
+        <label class="form-label">Potential</label>
+        <input type="number" class="form-input" min="0" max="100" placeholder="0-100" v-model="potential" />
     </div>
-    <div>
-        <label>Value</label>
-        <input type="text" v-model="value" />
+    <div class="form-group">
+        <label class="form-label">Value</label>
+        <input type="text" class="form-input" v-model="value" />
     </div>
-    <div>
-        <label>Wage</label>
-        <input type="text" v-model="wage" />
+    <div class="form-group">
+        <label class="form-label">Wage</label>
+        <input type="text" class="form-input" v-model="wage" />
     </div>
     <button  @click="createPlayer">Create</button>
   </div>

@@ -1,0 +1,51 @@
+//@import "bulma/bulma.sass";
+@import url('https://fonts.googleapis.com/css?family=Roboto+Mono:400,700|Rubik:400,700,900');;
+
+ body {
+    font-family: 'Roboto Mono', monospace;
+    background: #000;
+}
+
+.logo {
+    color: #fff;
+}
+
+h1, h2, h3, h4, h5 {
+    font-family: 'Rubik', sans-serif
+}
+
+.container {
+    width: 1000px;
+    max-width: 90%;
+    margin: 0 auto;
+}
+
+.box {
+    background: #fff;
+    border-radius: 10px;
+    padding: 2em;
+}
+
+ul.reset {
+    margin: 0;
+    padding: 0;
+}
+
+.form-group {
+    margin-bottom: 1em;
+}
+
+.form-label {
+    min-width: 120px;
+    display: inline-block;
+}
+
+.form-input {
+    font-size: 1.2em;
+    line-height: 1.2em;
+}
+
+.fullWidth {
+    display: block;
+    width: 100%;
+}

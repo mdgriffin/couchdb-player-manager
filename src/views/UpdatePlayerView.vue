@@ -4,37 +4,37 @@
           <template slot="content" slot-scope="_">
             <h2>Update Player</h2>
             <alert v-bind:show="showUpdatedAlert" @close="closeUpdatedAlert">Player Update Successfully</alert>
-            <div>
-                <label>Name</label>
-                <input type="text" v-model="player.Name" />
+            <div class="form-group">
+                <label class="form-label">Name</label>
+                <input type="text" class="form-input" v-model="player.Name" />
             </div>
-            <div>
-                <label>Age</label>
-                <input type="text" v-model="player.Age" />
+            <div class="form-group">
+                <label class="form-label">Age</label>
+                <input type="text" class="form-input" v-model="player.Age" />
             </div>
-            <div>
-                <label>Nationality</label>
-                <input type="text" v-model="player.Nationality" />
+            <div class="form-group">
+                <label class="form-label">Nationality</label>
+                <input type="text" class="form-input" v-model="player.Nationality" />
             </div>
-            <div>
-                <label>Club</label>
-                <input type="text" v-model="player.Club" />
+            <div class="form-group">
+                <label class="form-label">Club</label>
+                <input type="text" class="form-input" v-model="player.Club" />
             </div>
-            <div>
-                <label>Overall</label>
-                <input type="text" v-model="player.Overall" />
+            <div class="form-group">
+                <label class="form-label">Overall</label>
+                <input type="number" class="form-input" min="0" max="100" placeholder="0-100" v-model="player.Overall" />
             </div>
-            <div>
-                <label>Potential</label>
-                <input type="text" v-model="player.Potential" />
+            <div class="form-group">
+                <label class="form-label">Potential</label>
+                <input type="number" class="form-input" min="0" max="100" placeholder="0-100" v-model="player.Potential" />
             </div>
-            <div>
-                <label>Value</label>
-                <input type="text" v-model="player.Value" />
+            <div class="form-group">
+                <label class="form-label">Value</label>
+                <input type="text" class="form-input" v-model="player.Value" />
             </div>
-            <div>
-                <label>Wage</label>
-                <input type="text" v-model="player.Wage" />
+            <div class="form-group">
+                <label class="form-label">Wage</label>
+                <input type="text" class="form-input" v-model="player.Wage" />
             </div>
             <button  @click="updatePlayer">Update</button>
           </template>
