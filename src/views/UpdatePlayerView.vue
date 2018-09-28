@@ -2,7 +2,7 @@
     <div class="updatePlayer">
         <loader :loading="playerLoading">
           <template slot="content" slot-scope="_">
-            <h2>Add Player</h2>
+            <h2>Update Player</h2>
             <div>
                 <label>Name</label>
                 <input type="text" v-model="player.Name" />
