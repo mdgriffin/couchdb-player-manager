@@ -3,6 +3,7 @@
         <loader :loading="playerLoading">
           <template slot="content" slot-scope="_">
             <h2>Update Player</h2>
+            <alert v-bind:show="showUpdatedAlert" @close="closeUpdatedAlert">Player Update Successfully</alert>
             <div>
                 <label>Name</label>
                 <input type="text" v-model="player.Name" />
@@ -44,17 +45,20 @@
 <script>
 import { getPlayerById, updatePlayer } from "../db/players-db";
 import Loader from "../components/loader.vue";
+import Alert from "../components/alert.vue";
 
 export default {
   name: "update-player-view",
    data() {
     return {
+      showUpdatedAlert: false,
       playerLoading: true,
       player: {}
     };
   },
   components: {
-    loader: Loader
+    loader: Loader,
+    alert: Alert
   },
   methods: {
     updatePlayer () {
@@ -63,10 +67,15 @@ export default {
       .then(res => {
         self.player._id = res.id
         self.player._rev = res.rev
+        self.showUpdatedAlert = true
       })
       .catch(err => {
         console.error(err)
       })
+    },
+    closeUpdatedAlert () {
+      console.log('Closing alert')
+      this.showUpdatedAlert = false
     }
   },
   created () {
