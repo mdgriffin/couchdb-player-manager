@@ -28,7 +28,10 @@ export function getPlayerById (playerId) {
 }
 
 export function addPlayer (playerObj) {
-    // TODO: Save player to db and sync with CouchDB
     playerObj['_id'] = playerObj['Name'].replace(' ', '_').toLowerCase()
     return db.put(playerObj)
+}
+
+export function updatePlayer (playerObj) {
+    return db.put(playerObj);
 }

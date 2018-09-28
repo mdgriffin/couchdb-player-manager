@@ -2,9 +2,10 @@
   <div class="playerList">
     <h1>Players</h1>
     <div class="playerList-single" v-for="player in players" :key="player._id">
-      <h2>
-        <router-link :to="'players/' + player._id">{{player.Name }}</router-link>
-      </h2>
+      <h3>
+        <router-link :to="'/players/' + player._id">{{player.Name }}</router-link>
+        (<router-link :to="'/players/' + player._id + '/edit'">edit</router-link>)
+      </h3>
     </div>
   </div>
 </template>
