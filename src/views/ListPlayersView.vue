@@ -8,7 +8,7 @@
 </template>
 
 <script>
-import {getPlayers} from '../db/players-db'
+import {getPlayersPaginated} from '../db/players-db'
 
 export default {
   name: 'list-players-view',
@@ -23,16 +23,9 @@ export default {
     players () {
       let self = this
       return new Promise((resolve, reject) => {
-        //playersDb.allDocs({include_docs: true})
-        getPlayers()
+        getPlayersPaginated(self.startPlayerIndex, self.startPlayerIndex + self.numPlayerPerPage - 1)
         .then(result => {
-          
-          let filteredPlayers = result.rows.slice(self.startPlayerIndex, self.startPlayerIndex + self.numPlayerPerPage - 1).reduce((prev, curr, currIndex) => {
-            prev.push(curr.doc);
-            return prev
-          }, [])
-
-          resolve(filteredPlayers);
+          resolve(result)
         })
         .catch (err => {
           reject(err)
