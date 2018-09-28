@@ -23,7 +23,7 @@ app.get('/', (req, res) => {
     res.render('index', { title: 'Hey', message: 'Hello there!' })
 })
 
-app.get('/players', (req, res) => {
+app.get('/api/players', (req, res) => {
     playersDb.find({
         selector: {
             'Name': { "$ne": "Brian"}
@@ -38,7 +38,7 @@ app.get('/players', (req, res) => {
     })
 })
 
-app.get('/clubs', (req, res) => {
+app.get('/api/clubs', (req, res) => {
 
     clubsDb.list({include_docs: true})
     .then((body) => {
@@ -51,7 +51,7 @@ app.get('/clubs', (req, res) => {
     })
 })
 
-app.post('/clubs', (req, res) => {
+app.post('/api/clubs', (req, res) => {
 
     // can add pass a key as the second param
     clubsDb
@@ -60,7 +60,7 @@ app.post('/clubs', (req, res) => {
         .catch(err => res.send(err))
 })
 
-app.delete('/clubs/:teamId', (req, res) => {
+app.delete('/api/clubs/:teamId', (req, res) => {
 
     clubsDb.get(req.params.teamId).then((body) => {
         clubsDb
