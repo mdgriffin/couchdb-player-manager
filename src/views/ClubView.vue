@@ -1,21 +1,19 @@
 <template>
     <div class="club">
         <h3>{{ $route.params.id }}</h3>
-        <div class="playerList-single" v-for="player in players" :key="player._id">
-        <h3>
-            <router-link :to="'/players/' + player._id">{{player.Name }}</router-link>
-            (<router-link :to="'/players/' + player._id + '/edit'">edit</router-link>)
-            <button @click="deletePlayer(player)">Delete</button>
-        </h3>
-        </div>
+        <player-list :players="players"></player-list>
     </div>
 </template>
 
 <script>
 import {getPlayersByClub} from '../db/players-db'
+import PlayerList from '../components/player-list.vue'
 
 export default {
     name: 'club-view',
+    components: {
+        'player-list': PlayerList
+    },
     asyncComputed: {
         players () {
             let self = this

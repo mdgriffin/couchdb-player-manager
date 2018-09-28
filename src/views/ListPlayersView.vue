@@ -1,36 +1,24 @@
 <template>
-  <div class="playerList">
+  <div class="playerIndex">
     <h1>Players</h1>
-    <div class="playerList-single" v-for="player in players" :key="player._id">
-      <h3>
-        <router-link :to="'/players/' + player._id">{{player.Name }}</router-link>
-        (<router-link :to="'/players/' + player._id + '/edit'">edit</router-link>)
-        <button @click="deletePlayer(player)">Delete</button>
-      </h3>
-    </div>
+    <player-list :players="players"></player-list>
   </div>
 </template>
 
 <script>
 import {getPlayersPaginated, deletePlayer} from '../db/players-db'
+import PlayerList from '../components/player-list.vue'
 
 export default {
   name: 'list-players-view',
-  components: { },
+  components: {
+    'player-list': PlayerList
+  },
   data() {
     return {
       numPlayersDeleted: 0,
       startPlayerIndex: 0,
       numPlayerPerPage: 100
-    }
-  },
-  methods: {
-    deletePlayer (player) {
-      let self = this
-      deletePlayer(player._id, player._rev)
-      .then(res => {
-        self.numPlayersDeleted++
-      })
     }
   },
   asyncComputed: {
