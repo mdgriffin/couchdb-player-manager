@@ -1,7 +1,7 @@
 <template>
   <div class="createPlayer">
-    <div v-if="playerLoading">Loading</div>
-    <div v-if="!playerLoading">
+    <loader :loading="playerLoading">
+      <template slot="content" slot-scope="_">
         <h2>{{player.Name}}</h2>
         <table>
             <tbody>
@@ -35,12 +35,14 @@
                 </tr>
             </tbody>
         </table>
-    </div>
+      </template>
+    </loader>
   </div>
 </template>
 
 <script>
 import { getPlayerById } from "../db/players-db";
+import Loader from "../components/loader.vue";
 
 export default {
   name: "players-view",
@@ -48,6 +50,9 @@ export default {
     return {
       playerLoading: true
     };
+  },
+  components: {
+    loader: Loader
   },
   asyncComputed: {
     player() {
