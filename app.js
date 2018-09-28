@@ -19,7 +19,7 @@ app.use(express.static('public'))
 
 // http://localhost:5984/_utils/
 
-app.get('/', (req, res) => {
+app.get('/*', (req, res) => {
     res.render('index', { title: 'Hey', message: 'Hello there!' })
 })
 
