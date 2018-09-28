@@ -1,8 +1,10 @@
 <template>
   <div class="playerList">
     <h1>Players</h1>
-    <div class="teamList" v-for="player in players" :key="player._id">
-      <h2>{{player.Name }}</h2>
+    <div class="playerList-single" v-for="player in players" :key="player._id">
+      <h2>
+        <router-link :to="'players/' + player._id">{{player.Name }}</router-link>
+      </h2>
     </div>
   </div>
 </template>

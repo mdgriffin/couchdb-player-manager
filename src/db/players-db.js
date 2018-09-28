@@ -23,6 +23,10 @@ export function getPlayersPaginated (startIndex, endIndex) {
       });
 }
 
+export function getPlayerById (playerId) {
+    return db.get(playerId);
+}
+
 export function addPlayer (playerObj) {
     // TODO: Save player to db and sync with CouchDB
     playerObj['_id'] = playerObj['Name'].replace(' ', '_').toLowerCase()
