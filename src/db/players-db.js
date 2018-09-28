@@ -35,3 +35,7 @@ export function addPlayer (playerObj) {
 export function updatePlayer (playerObj) {
     return db.put(playerObj);
 }
+
+export function deletePlayer (playerId, playerRev) {
+    return db.remove(playerId, playerRev)
+}
