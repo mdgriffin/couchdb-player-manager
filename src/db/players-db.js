@@ -1,5 +1,5 @@
 import PouchDB from 'pouchdb'
-const db = new PouchDB('http://localhost:5984/players2');
+const db = new PouchDB('http://localhost:5984/players');
 //localDB.replicate.from(remoteDB);
 
 export function getPlayers () {
@@ -38,4 +38,12 @@ export function updatePlayer (playerObj) {
 
 export function deletePlayer (playerId, playerRev) {
     return db.remove(playerId, playerRev)
+}
+
+export function getClubs () {
+    return db.query('player-views/clubs', {reduce: true, group: true})
+}
+
+export function getPlayersByClub (clubName) {
+    return db.query('player-views/club-players', {key: clubName})
 }
