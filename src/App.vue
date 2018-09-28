@@ -12,3 +12,18 @@
     </transition>
   </div>
 </template>
+
+<script>
+import './styles/global.scss'
+
+export default {
+  name: 'main-app'
+}
+</script>
+
+
+<style lang="scss">
+h1 {
+  color: green;
+}
+</style>
