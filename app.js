@@ -7,7 +7,7 @@ const pug = require('pug');
 const bodyParser = require('body-parser')
 const multer = require('multer')
 const upload = multer()
-const clubsDb = nano.use("clubs");
+//const clubsDb = nano.use("clubs");
 const playersDb = nano.use("players");
 
 app.use(bodyParser.json())
@@ -19,25 +19,36 @@ app.use(express.static('public'))
 
 // http://localhost:5984/_utils/
 
-app.get('/*', (req, res) => {
-    res.render('index', { title: 'Hey', message: 'Hello there!' })
-})
 
 app.get('/api/players', (req, res) => {
-    playersDb.find({
-        selector: {
-            'Name': { "$ne": "Brian"}
-          },
+    playersDb.list({
+        include_docs: true,
         limit: 50
     })
     .then((result) => {
-        res.json(result.docs)
+        res.json(result)
     })
     .catch(err => {
         console.log(err);
     })
 })
 
+app.get('/api/players/:playerId', (req, res) => {
+    playersDb.get(req.params.playerId)
+    .then((result) => {
+        res.json(result)
+    })
+    .catch(err => {
+        console.log(err);
+    })
+})
+
+app.get('/*', (req, res) => {
+    res.render('index', { title: 'Hey', message: 'Hello there!' })
+})
+
+
+/*
 app.get('/api/clubs', (req, res) => {
 
     clubsDb.list({include_docs: true})
@@ -73,5 +84,6 @@ app.delete('/api/clubs/:teamId', (req, res) => {
             })
       });
 })
+*/
 
 app.listen(port, () => console.log(`Listening on port ${port}!`))

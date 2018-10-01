@@ -41,7 +41,8 @@
 </template>
 
 <script>
-import { getPlayerById } from "../db/players-db";
+//import { getPlayerById } from "../db/players-db";
+import { getPlayerById } from "../api/players-api";
 import Loader from "../components/loader.vue";
 
 export default {

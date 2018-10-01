@@ -6,7 +6,8 @@
 </template>
 
 <script>
-import {getPlayersPaginated} from '../db/players-db'
+//import {getPlayersPaginated} from '../db/players-db'
+import {getPlayersPaginated} from '../api/players-api'
 import PlayerList from '../components/player-list.vue'
 
 export default {
@@ -31,6 +32,7 @@ export default {
             resolve(result)
           })
           .catch (err => {
+            console.error(err)
             reject(err)
           })
         })
