@@ -1,9 +1,15 @@
 //@import "bulma/bulma.sass";
-@import url('https://fonts.googleapis.com/css?family=Roboto+Mono:400,700|Rubik:400,700,900');;
+@import url('https://fonts.googleapis.com/css?family=Roboto+Mono:400,700|Rubik:400,700,900');
+
+
+
+$primary_colour: #041f6e;
 
  body {
+    background: url("/images/football_bg.svg") no-repeat;
+    background-size: cover;
     font-family: 'Roboto Mono', monospace;
-    background: #000;
+    color: #fff
 }
 
 .logo {
@@ -14,6 +20,10 @@ h1, h2, h3, h4, h5 {
     font-family: 'Rubik', sans-serif
 }
 
+a {
+    color: #fff;
+}
+
 .container {
     width: 1000px;
     max-width: 90%;
@@ -21,9 +31,10 @@ h1, h2, h3, h4, h5 {
 }
 
 .box {
-    background: #fff;
+    background: $primary_colour;
     border-radius: 10px;
     padding: 2em;
+    box-shadow:0px 5px 18px -1px rgba(0, 0, 0, 0.4);
 }
 
 ul.reset {
@@ -48,4 +59,21 @@ ul.reset {
 .fullWidth {
     display: block;
     width: 100%;
+}
+
+.btn {
+    background: lighten($primary_colour, 5%);
+    color: #fff;
+    border: none;
+    padding: 0.75em 1em;
+    cursor: pointer;
+    font-size: 1em;
+}
+
+.btn:hover {
+    background: lighten($primary_colour, 10%);
+}
+
+a.btn {
+    text-decoration: none;
 }

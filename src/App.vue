@@ -33,7 +33,7 @@ export default {
 .mainNav li a {
   display: block;
   padding: 5px;
-  color: #000;
+  color: #fff;
   font-size: 1.2em;
 }
 </style>
