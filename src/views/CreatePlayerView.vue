@@ -34,7 +34,7 @@
         <label class="form-label">Wage</label>
         <input type="text" class="form-input" v-model="wage" />
     </div>
-    <button  @click="createPlayer">Create</button>
+    <button @click="createPlayer" class="btn btn-secondary">Create</button>
   </div>
 </template>
 

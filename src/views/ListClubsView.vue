@@ -1,7 +1,7 @@
 <template>
-    <div class="clubList">
+    <div class="clubList itemList">
         <h2>Clubs</h2>
-        <div class="clubList-single" v-for="club in clubs" :key="club.key" >
+        <div class="clubList-single itemList-single" v-for="club in clubs" :key="club.key" >
             <h3><router-link :to="'/clubs/' + club.key">{{club.key}} - {{club.value}} players</router-link></h3>
         </div>
     </div>

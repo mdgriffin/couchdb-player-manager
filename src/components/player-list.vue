@@ -1,8 +1,8 @@
 <template>
-  <div class="playerList">
-      <div class="playerList-single" v-for="player in players" :key="player._id">
+  <div class="playerList itemList">
+      <div class="playerList-single itemList-single" v-for="player in players" :key="player._id">
         <h3> <router-link :to="'/players/' + player._id">{{player.Name }}</router-link></h3>
-        <div class="playerList-single-actions">
+        <div class="playerList-single-actions itemList-single-actions">
           <router-link class="btn" :to="'/players/' + player._id + '/edit'">edit</router-link>
           <button class="btn" @click="deletePlayer(player)"><i class="fas fa-times"></i></button>
         </div>
@@ -24,19 +24,3 @@ export default {
   }
 };
 </script>
-
-<style lang="scss">
-.playerList-single {
-  border: 1px solid rgba(255,255,255,0.1);
-  margin-bottom: 1em;
-  padding: 1em;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.playerList-single:hover {
-  background: rgba(255,255,255,0.05);
-}
-</style>
-
