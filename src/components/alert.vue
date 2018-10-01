@@ -1,7 +1,7 @@
 <template>
-    <div v-if="show" :class="'alert ' + customClass">
+    <div v-if="show" :class="'alert alert-' + alertType">
         <slot></slot>
-        <button @click="closeAlert">Close Alert</button>
+        <button @click="closeAlert" class="btn"><i class="fas fa-times"></i></button>
     </div>
 </template>
 
@@ -9,9 +9,9 @@
 export default {
     name: 'alert',
     props: {
-        customClass: {
+        alertType: {
             type: String,
-            default: ''
+            default: 'success'
         },
         show: Boolean
     },
@@ -22,4 +22,24 @@ export default {
     }
 }
 </script>
+
+
+<style lang="scss">
+.alert {
+    margin-bottom: 1em;
+    padding: 0.5em;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.alert-success {
+    background: green;
+}
+
+.alert-error {
+    background: red;
+}
+</style>
+
 
