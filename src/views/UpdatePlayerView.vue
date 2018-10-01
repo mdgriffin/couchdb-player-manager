@@ -18,7 +18,9 @@
             </div>
             <div class="form-group">
                 <label class="form-label">Club</label>
-                <input type="text" class="form-input" v-model="player.Club" />
+                <select v-model="player.Club">
+                  <option v-for="clubItem in clubs" :key="clubItem.key">{{clubItem.key}}</option>
+              </select>
             </div>
             <div class="form-group">
                 <label class="form-label">Overall</label>
@@ -36,14 +38,14 @@
                 <label class="form-label">Wage</label>
                 <input type="text" class="form-input" v-model="player.Wage" />
             </div>
-            <button  @click="updatePlayer">Update</button>
+            <button  @click="updatePlayer" class="btn btn-secondary">Update</button>
           </template>
       </loader>
     </div>
 </template>
 
 <script>
-import { getPlayerById, updatePlayer } from "../db/players-db";
+import { getPlayerById, updatePlayer, getClubs } from "../db/players-db";
 import Loader from "../components/loader.vue";
 import Alert from "../components/alert.vue";
 
@@ -88,6 +90,20 @@ export default {
       .catch(err => {
         console.error(err);
       });
+  },
+  asyncComputed: {
+      clubs () {
+          let self = this
+          return new Promise((resolve, reject) => {
+              getClubs()
+              .then(result => {
+                  resolve(result)
+              })
+              .catch (err => {
+                  reject(err)
+              })
+          })
+      }
   }
 };
 </script>
