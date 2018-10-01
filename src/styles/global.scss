@@ -36,13 +36,26 @@ a {
     background: $primary_colour;
     border-radius: 10px;
     padding: 2em;
-    box-shadow:0px 5px 18px -1px rgba(0, 0, 0, 0.4);
+    box-shadow:0px 5px 18px -1px rgba(0, 0, 0, 0.2);
     margin-bottom: 2em;
 }
 
 ul.reset {
     margin: 0;
     padding: 0;
+}
+
+.mainNav {
+    border-bottom: 3px solid rgba(255,255,255,0.1);
+    padding-bottom: 1em;
+}
+
+.mainNav a {
+    text-decoration: none;
+}
+
+.mainNav a:hover {
+    text-decoration: underline;
 }
 
 .form-group {
