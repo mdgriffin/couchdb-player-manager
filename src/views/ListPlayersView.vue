@@ -6,7 +6,7 @@
 </template>
 
 <script>
-import {getPlayersPaginated, deletePlayer} from '../db/players-db'
+import {getPlayersPaginated} from '../db/players-db'
 import PlayerList from '../components/player-list.vue'
 
 export default {

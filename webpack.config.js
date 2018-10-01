@@ -13,7 +13,7 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.scss$/,
+        test: /\.s?css$/,
         use: [
             'vue-style-loader',
             "style-loader", // creates style nodes from JS strings

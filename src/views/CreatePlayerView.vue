@@ -16,7 +16,9 @@
     </div>
     <div class="form-group">
         <label class="form-label">Club</label>
-        <input type="text" class="form-input" v-model="club" />
+        <select v-model="club">
+            <option v-for="clubItem in clubs" :key="clubItem.key">{{clubItem.key}}</option>
+        </select>
     </div>
     <div class="form-group">
         <label class="form-label">Overall</label>
@@ -39,7 +41,7 @@
 </template>
 
 <script>
-import  {addPlayer} from '../db/players-db'
+import  {addPlayer, getClubs} from '../db/players-db'
 import Alert from "../components/alert.vue";
 
 export default {
@@ -54,7 +56,7 @@ export default {
             potential: "",
             club: "",
             value: "",
-            wage: ""
+            wage: "",
         }
     },
     components: {
@@ -92,6 +94,20 @@ export default {
             this.club = ""
             this.value = ""
             this.wage = ""
+        }
+    },
+    asyncComputed: {
+        clubs () {
+            let self = this
+            return new Promise((resolve, reject) => {
+                getClubs()
+                .then(result => {
+                    resolve(result)
+                })
+                .catch (err => {
+                    reject(err)
+                })
+            })
         }
     }
 }

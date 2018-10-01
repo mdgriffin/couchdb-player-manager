@@ -11,6 +11,8 @@
 </template>
 
 <script>
+import {deletePlayer} from '../db/players-db'
+
 export default {
   name: "player-list",
   props: ["players"],
