@@ -1,7 +1,7 @@
 <template>
   <div id="app" class="container">
-    <h1 class="logo">Football StatsHub <i class="far fa-futbol"></i></h1>
     <div class="box">
+      <h1 class="logo"><i class="far fa-futbol"></i> Football StatsHub <i class="far fa-futbol"></i></h1>
       <nav class="mainNav">
         <ul class="reset">
           <li><router-link to="/">Home</router-link></li>

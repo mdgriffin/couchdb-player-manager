@@ -7,8 +7,8 @@ $primary_colour: #041f6e;
 $secondary_color: #dc1441;
 
  body {
-    background: url("/images/football_bg.svg") no-repeat;
-    background-size: cover;
+    background: url("/images/football_bg.jpg") repeat;
+    background-size: 450px;
     font-family: 'Roboto Mono', monospace;
     color: #fff
 }
@@ -16,6 +16,7 @@ $secondary_color: #dc1441;
 .logo {
     color: #fff;
     text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+    text-align: center;
 }
 
 h1, h2, h3, h4, h5 {
