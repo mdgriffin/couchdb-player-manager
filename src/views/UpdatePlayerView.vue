@@ -18,7 +18,7 @@
             </div>
             <div class="form-group">
                 <label class="form-label">Club</label>
-                <select v-model="player.Club">
+                <select v-model="player.Club" class="form-input">
                   <option v-for="clubItem in clubs" :key="clubItem.key">{{clubItem.key}}</option>
               </select>
             </div>
