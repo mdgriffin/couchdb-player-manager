@@ -22,6 +22,16 @@ export function getPlayerById (playerId) {
         })
 }
 
+export function addPlayer (playerObj) {
+    playerObj['_id'] = playerObj['Name'].replace(' ', '_').toLowerCase()
+    return fetch('/api/players', {
+        method: 'POST',
+        body: JSON.stringify(playerObj)
+    })
+    .then(result => {
+        return result.json()
+    })
+}
 
 export function deletePlayer (playerId) {
     return fetch('/api/players/' + playerId, {

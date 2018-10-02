@@ -41,7 +41,8 @@
 </template>
 
 <script>
-import  {addPlayer, getClubs} from '../db/players-db'
+import  {getClubs} from '../db/players-db'
+import {addPlayer} from '../api/players-api.js'
 import Alert from "../components/alert.vue";
 
 export default {
