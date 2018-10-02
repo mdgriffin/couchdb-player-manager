@@ -1,13 +1,15 @@
 <template>
   <div class="playerIndex">
     <h1>Players</h1>
+    <p>Page {{currentPage + 1}} of {{numPages}}</p>
+    <button @click="nextPage">Next Page</button>
     <player-list :players="players" @delete="onPlayerDeleted"></player-list>
   </div>
 </template>
 
 <script>
 //import {getPlayersPaginated} from '../db/players-db'
-import {getPlayersPaginated} from '../api/players-api'
+import {getPlayers} from '../api/players-api'
 import PlayerList from '../components/player-list.vue'
 
 export default {
@@ -18,13 +20,24 @@ export default {
   data() {
     return {
       numPlayersDeleted: 0,
-      startPlayerIndex: 0,
-      numPlayerPerPage: 100
+      currentPage: 0,
+      limit: 20,
+      totalRows: 0
     }
   },
   methods: {
     onPlayerDeleted (playerId) {
       this.numPlayersDeleted++;
+    },
+    nextPage () {
+      if (this.currentPage < this.numPages) {
+        this.currentPage++;
+      }
+    }
+  },
+  computed: {
+    numPages () {
+      return Math.ceil(this.totalRows / this.limit);
     }
   },
   asyncComputed: {
@@ -32,9 +45,10 @@ export default {
       get () {
         let self = this
         return new Promise((resolve, reject) => {
-          getPlayersPaginated(self.startPlayerIndex, self.startPlayerIndex + self.numPlayerPerPage - 1)
+          getPlayers(self.limit, self.limit * self.currentPage)
           .then(result => {
-            resolve(result)
+            self.totalRows = result.total_rows;
+            resolve(result.rows)
           })
           .catch (err => {
             console.error(err)

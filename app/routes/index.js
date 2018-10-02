@@ -7,7 +7,10 @@ const clubController = require('../controllers/club-controller')(playersDb)
 module.exports = function(app) {
 
 app.get('/api/players', (req, res) => {
-    playerController.getPlayers()
+    let limit = req.query.limit || 50;
+    let skip = req.query.skip || 0;
+
+    playerController.getPlayers(limit, skip)
     .then((result) => {
         res.json(result)
     })

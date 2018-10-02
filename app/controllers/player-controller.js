@@ -1,10 +1,13 @@
 module.exports = function (db){
     return {
-        getPlayers () {
+        getPlayers (limit, skip) {
+            limit = limit || 10;
+            skip = skip || 0;
             return db.list({
                 include_docs: true,
-                limit: 50
-            })
+                skip: skip,
+                limit: limit
+            });
         },
         getPlayer (playerId) {
             return db.get(playerId)

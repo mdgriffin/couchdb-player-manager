@@ -1,17 +1,18 @@
-export function getPlayers () {
-    return getPlayersPaginated(0, 1000);
-}
-
-export function getPlayersPaginated (startIndex, endIndex) {
-    return fetch('/api/players')
+export function getPlayers (limit, skip) {
+    return fetch('/api/players?limit=' + limit + '&skip=' + skip)
         .then(result => {
             return result.json()
         })
         .then(result => {
-            return result.rows.reduce((acc, cur) => {
+            var resultObj = {};
+            resultObj.offset = result.offset;
+            resultObj.total_rows = result.total_rows;
+            resultObj.rows = result.rows.reduce((acc, cur) => {
                 acc.push(cur.doc)
                 return acc
-            }, [])
+            }, []);
+
+            return resultObj
         })
 }
 
