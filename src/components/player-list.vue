@@ -11,7 +11,8 @@
 </template>
 
 <script>
-import {deletePlayer} from '../db/players-db'
+//import {deletePlayer} from '../db/players-db'
+import {deletePlayer} from '../api/players-api.js'
 
 export default {
   name: "player-list",
@@ -20,7 +21,7 @@ export default {
     deletePlayer(player) {
       let self = this;
       deletePlayer(player._id, player._rev).then(res => {
-        self.numPlayersDeleted++;
+        this.$emit('delete', player._id);
       });
     }
   }

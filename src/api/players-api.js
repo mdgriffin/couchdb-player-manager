@@ -21,3 +21,13 @@ export function getPlayerById (playerId) {
             return result.json()
         })
 }
+
+
+export function deletePlayer (playerId) {
+    return fetch('/api/players/' + playerId, {
+        method: 'DELETE'
+    })
+        .then(result => {
+            return result.json()
+        })
+}

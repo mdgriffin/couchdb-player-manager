@@ -29,7 +29,7 @@ app.get('/api/players', (req, res) => {
         res.json(result)
     })
     .catch(err => {
-        console.log(err);
+        res.status(err.statusCode).json({success: false, error: err.error})
     })
 })
 
@@ -39,14 +39,29 @@ app.get('/api/players/:playerId', (req, res) => {
         res.json(result)
     })
     .catch(err => {
-        console.log(err);
+        res.status(err.statusCode).json({success: false, error: err.error})
+    })
+})
+
+app.delete('/api/players/:playerId', (req, res) => {
+    playersDb.get(req.params.playerId)
+    .then((result) => {
+        playersDb.destroy(result._id, result._rev)
+        .then((body) => {
+            res.json(body)
+        })
+        .catch(err => {
+            res.status(err.statusCode).json({success: false, error: err.error})
+        })
+    })
+    .catch(err => {
+        res.status(err.statusCode).json({success: false, error: err.error})
     })
 })
 
 app.get('/*', (req, res) => {
     res.render('index', { title: 'Hey', message: 'Hello there!' })
 })
-
 
 /*
 app.get('/api/clubs', (req, res) => {

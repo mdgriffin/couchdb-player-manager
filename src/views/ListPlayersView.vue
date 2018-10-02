@@ -1,7 +1,7 @@
 <template>
   <div class="playerIndex">
     <h1>Players</h1>
-    <player-list :players="players"></player-list>
+    <player-list :players="players" @delete="onPlayerDeleted"></player-list>
   </div>
 </template>
 
@@ -20,6 +20,11 @@ export default {
       numPlayersDeleted: 0,
       startPlayerIndex: 0,
       numPlayerPerPage: 100
+    }
+  },
+  methods: {
+    onPlayerDeleted (playerId) {
+      this.numPlayersDeleted++;
     }
   },
   asyncComputed: {
