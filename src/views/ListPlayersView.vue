@@ -1,9 +1,9 @@
 <template>
   <div class="playerIndex">
     <h1>Players</h1>
-    <button @click="prevPage">Prev Page</button>
+    <button @click="prevPage" :disabled="!canNavBack">Prev Page</button>
     <p>Page {{currentPage}} of {{numPages}}</p>
-    <button @click="nextPage">Next Page</button>
+    <button @click="nextPage" :disabled="!canNavForward">Next Page</button>
     <player-list :players="players" @delete="onPlayerDeleted"></player-list>
   </div>
 </template>
@@ -59,6 +59,12 @@ export default {
   computed: {
     numPages () {
       return Math.ceil(this.totalRows / this.limit);
+    },
+    canNavBack () {
+      return this.currentPage > 1;
+    },
+    canNavForward () {
+      return this.currentPage < this.numPages;
     }
   },
   asyncComputed: {
