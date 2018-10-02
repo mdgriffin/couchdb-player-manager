@@ -9,7 +9,7 @@
 
 
 <script>
-import {getClubs} from '../db/players-db'
+import {getClubs} from '../api/players-api'
 
 export default {
     name: 'clubs-list',

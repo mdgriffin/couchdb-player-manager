@@ -45,8 +45,7 @@
 </template>
 
 <script>
-import { getClubs } from "../db/players-db";
-import { getPlayerById, updatePlayer } from "../api/players-api"
+import { getClubs, getPlayerById, updatePlayer } from "../api/players-api"
 import Loader from "../components/loader.vue";
 import Alert from "../components/alert.vue";
 

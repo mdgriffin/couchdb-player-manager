@@ -48,7 +48,6 @@ export function getClubs () {
             })
             .catch(err => reject(err))
     })
-    
 }
 
 export function getPlayersByClub (clubName) {

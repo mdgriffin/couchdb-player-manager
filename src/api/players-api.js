@@ -57,3 +57,26 @@ export function deletePlayer (playerId) {
             return result.json()
         })
 }
+
+export function getClubs () {
+    return fetch('/api/clubs')
+        .then(result => {
+            return result.json()
+        })
+        .then(result => {
+            return result.rows
+        })
+}
+
+export function getPlayersByClub (clubName) {
+    return fetch('/api/clubs/' + clubName)
+        .then(result => {
+            return result.json()
+        })
+        .then(result => {
+            return result.rows.reduce((acc, cur) => {
+                acc.push(cur.value)
+                return acc
+            }, [])
+        })
+}

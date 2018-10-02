@@ -6,7 +6,7 @@
 </template>
 
 <script>
-import {getPlayersByClub} from '../db/players-db'
+import {getPlayersByClub} from '../api/players-api'
 import PlayerList from '../components/player-list.vue'
 
 export default {
