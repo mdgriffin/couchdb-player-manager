@@ -26,6 +26,22 @@ export function addPlayer (playerObj) {
     playerObj['_id'] = playerObj['Name'].replace(' ', '_').toLowerCase()
     return fetch('/api/players', {
         method: 'POST',
+        headers: {
+            "Content-Type": "application/json; charset=utf-8"
+        },
+        body: JSON.stringify(playerObj)
+    })
+    .then(result => {
+        return result.json()
+    })
+}
+
+export function updatePlayer (playerObj) {
+    return fetch('/api/players/' + playerObj._id, {
+        method: 'PUT',
+        headers: {
+            "Content-Type": "application/json; charset=utf-8"
+        },
         body: JSON.stringify(playerObj)
     })
     .then(result => {

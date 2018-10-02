@@ -46,10 +46,20 @@ app.get('/api/players/:playerId', (req, res) => {
 app.post('/api/players', (req, res) => {
     playersDb
         .insert(req.body)
-        .then(result => res.send(result))
+        .then(result => res.json(result))
         .catch(err => {
             res.status(err.statusCode).json({success: false, error: err.error})
         })
+})
+
+app.put('/api/players/:playerId', (req, res) => {
+    playersDb.insert(req.body)
+    .then((result) => {
+        res.json(result)
+    })
+    .catch(err => {
+        res.status(err.statusCode).json({success: false, error: err.error})
+    })
 })
 
 app.delete('/api/players/:playerId', (req, res) => {
