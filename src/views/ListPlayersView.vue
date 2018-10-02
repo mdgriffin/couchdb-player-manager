@@ -1,6 +1,7 @@
 <template>
   <div class="playerIndex">
     <h1>Players</h1>
+    <button @click="prevPage">Prev Page</button>
     <p>Page {{currentPage + 1}} of {{numPages}}</p>
     <button @click="nextPage">Next Page</button>
     <player-list :players="players" @delete="onPlayerDeleted"></player-list>
@@ -8,7 +9,6 @@
 </template>
 
 <script>
-//import {getPlayersPaginated} from '../db/players-db'
 import {getPlayers} from '../api/players-api'
 import PlayerList from '../components/player-list.vue'
 
@@ -18,9 +18,10 @@ export default {
     'player-list': PlayerList
   },
   data() {
+    var pageParam = this.$route.query.page && parseInt(this.$route.query.page )
     return {
       numPlayersDeleted: 0,
-      currentPage: 0,
+      currentPage: pageParam || 0,
       limit: 20,
       totalRows: 0
     }
@@ -28,6 +29,11 @@ export default {
   methods: {
     onPlayerDeleted (playerId) {
       this.numPlayersDeleted++;
+    },
+    prevPage () {
+      if (this.currentPage > 0) {
+        this.currentPage--;
+      }
     },
     nextPage () {
       if (this.currentPage < this.numPages) {

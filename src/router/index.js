@@ -15,6 +15,7 @@ export function createRouter () {
     fallback: false,
     routes: [
       { path: '/', component: ListPlayersView },
+      { path: '/players', component: ListPlayersView },
       { path: '/players/:id/edit', component: UpdatePlayerView },
       { path: '/players/:id', component: PlayerView },
       { path: '/new-player', component: CreatePlayerView },
