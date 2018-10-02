@@ -1,9 +1,13 @@
-const playersController = require('../controllers/player-controller')
+const nano = require('nano')('http://localhost:5984')
+const playersDb = nano.use("players");
+
+const playerController = require('../controllers/player-controller')(playersDb)
+const clubController = require('../controllers/club-controller')(playersDb)
 
 module.exports = function(app) {
 
 app.get('/api/players', (req, res) => {
-    playersController.getPlayers()
+    playerController.getPlayers()
     .then((result) => {
         res.json(result)
     })
@@ -13,7 +17,7 @@ app.get('/api/players', (req, res) => {
 })
 
 app.get('/api/players/:playerId', (req, res) => {
-    playersController.getPlayer(req.params.playerId)
+    playerController.getPlayer(req.params.playerId)
     .then((result) => {
         res.json(result)
     })
@@ -23,7 +27,7 @@ app.get('/api/players/:playerId', (req, res) => {
 })
 
 app.post('/api/players', (req, res) => {
-    playersController.insertPlayer(req.body)
+    playerController.insertPlayer(req.body)
         .then(result => res.json(result))
         .catch(err => {
             res.status(err.statusCode).json({success: false, error: err.error})
@@ -31,7 +35,7 @@ app.post('/api/players', (req, res) => {
 })
 
 app.put('/api/players/:playerId', (req, res) => {
-    playersController.insertPlayer(req.body)
+    playerController.insertPlayer(req.body)
     .then((result) => {
         res.json(result)
     })
@@ -41,7 +45,7 @@ app.put('/api/players/:playerId', (req, res) => {
 })
 
 app.delete('/api/players/:playerId', (req, res) => {
-    playersController.deletePlayer(req.params.playerId)
+    playerController.deletePlayer(req.params.playerId)
     .then((body) => {
         res.json(body)
     })
@@ -51,10 +55,8 @@ app.delete('/api/players/:playerId', (req, res) => {
 })
 
 app.get('/api/clubs', (req, res) => {
-    playersDb.view('player-views', 'clubs', {
-        reduce: true,
-        group: true,
-      }).then((body) => {
+    clubController.getClubs()
+    .then((body) => {
         res.json(body)
       })
       .catch(err => {
@@ -62,10 +64,9 @@ app.get('/api/clubs', (req, res) => {
       })
 })
 
-app.get('/api/clubs/:teamId', (req, res) => {
-    playersDb.view('player-views', 'club-players', {
-        key: req.params.teamId
-      }).then((body) => {
+app.get('/api/clubs/:clubId', (req, res) => {
+    clubController.getClubPlayers(req.params.clubId)
+    .then((body) => {
         res.json(body)
       })
       .catch(err => {
