@@ -1,10 +1,17 @@
 <template>
   <div class="playerIndex">
     <h1>Players</h1>
-    <button @click="prevPage" :disabled="!canNavBack">Prev Page</button>
-    <p>Page {{currentPage}} of {{numPages}}</p>
-    <button @click="nextPage" :disabled="!canNavForward">Next Page</button>
+    <div class="pagination">
+      <button class="btn btn-secondary" @click="prevPage" :disabled="!canNavBack"><i class="fas fa-chevron-left"></i> Prev Page</button>
+      <p>Page {{currentPage}} of {{numPages}}</p>
+      <button class="btn btn-secondary" @click="nextPage" :disabled="!canNavForward">Next Page <i class="fas fa-chevron-right"></i></button>
+    </div>
     <player-list :players="players" @delete="onPlayerDeleted"></player-list>
+    <div class="pagination">
+      <button class="btn btn-secondary" @click="prevPage" :disabled="!canNavBack"><i class="fas fa-chevron-left"></i> Prev Page</button>
+      <p>Page {{currentPage}} of {{numPages}}</p>
+      <button class="btn btn-secondary" @click="nextPage" :disabled="!canNavForward">Next Page <i class="fas fa-chevron-right"></i></button>
+    </div>
   </div>
 </template>
 
