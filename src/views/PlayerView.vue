@@ -3,7 +3,8 @@
     <loader :loading="playerLoading">
       <template slot="content" slot-scope="_">
         <h2>{{player.Name}}</h2>
-        <table>
+        <h3>Personal Info</h3>
+        <table class="table">
             <tbody>
                 <tr>
                     <th>Club</th>
@@ -25,13 +26,34 @@
                     <th>Value</th>
                     <td>{{player.Value}}</td>
                 </tr>
+            </tbody>
+        </table>
+        <h3>Skills</h3>
+        <table class="table">
+            <tbody>
                 <tr>
-                    <th>Overall</th>
+                    <th>Overall Ability</th>
                     <td>{{player.Overall}}</td>
                 </tr>
                 <tr>
                     <th>Potential</th>
                     <td>{{player.Potential}}</td>
+                </tr>
+                <tr>
+                    <th>Agility</th>
+                    <td>{{player.Agility}}</td>
+                </tr>
+                <tr>
+                    <th>Accelleration</th>
+                    <td>{{player.Accelleration}}</td>
+                </tr>
+                <tr>
+                    <th>Dribbling</th>
+                    <td>{{player.Dribbling}}</td>
+                </tr>
+                <tr>
+                    <th>Finishing</th>
+                    <td>{{player.Finishing}}</td>
                 </tr>
             </tbody>
         </table>
