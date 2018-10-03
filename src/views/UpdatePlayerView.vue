@@ -31,6 +31,22 @@
                 <input type="number" class="form-input" min="0" max="100" placeholder="0-100" v-model="player.Potential" />
             </div>
             <div class="form-group">
+                <label class="form-label">Agility</label>
+                <input type="number" class="form-input" min="0" max="100" placeholder="0-100" v-model="player.Agility" />
+            </div>
+            <div class="form-group">
+                <label class="form-label">Acceleration</label>
+                <input type="number" class="form-input" min="0" max="100" placeholder="0-100" v-model="player.Acceleration" />
+            </div>
+            <div class="form-group">
+                <label class="form-label">Dribbling</label>
+                <input type="number" class="form-input" min="0" max="100" placeholder="0-100" v-model="player.Dribbling" />
+            </div>
+            <div class="form-group">
+                <label class="form-label">Finishing</label>
+                <input type="number" class="form-input" min="0" max="100" placeholder="0-100" v-model="player.Finishing" />
+            </div>
+            <div class="form-group">
                 <label class="form-label">Value</label>
                 <input type="text" class="form-input" v-model="player.Value" />
             </div>
