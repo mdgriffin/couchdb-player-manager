@@ -29,6 +29,22 @@
         <input type="number" class="form-input" min="0" max="100" placeholder="0-100" v-model="potential" />
     </div>
     <div class="form-group">
+        <label class="form-label">Agility</label>
+        <input type="number" class="form-input" min="0" max="100" placeholder="0-100" v-model="agility" />
+    </div>
+    <div class="form-group">
+        <label class="form-label">Acceleration</label>
+        <input type="number" class="form-input" min="0" max="100" placeholder="0-100" v-model="acceleration" />
+    </div>
+    <div class="form-group">
+        <label class="form-label">Dribbling</label>
+        <input type="number" class="form-input" min="0" max="100" placeholder="0-100" v-model="dribbling" />
+    </div>
+    <div class="form-group">
+        <label class="form-label">Finishing</label>
+        <input type="number" class="form-input" min="0" max="100" placeholder="0-100" v-model="finishing" />
+    </div>
+    <div class="form-group">
         <label class="form-label">Value</label>
         <input type="text" class="form-input" v-model="value" />
     </div>
@@ -55,6 +71,10 @@ export default {
             nationality: "",
             overall: "",
             potential: "",
+            agility: "",
+            acceleration: "",
+            dribbling: "",
+            finishing: "",
             club: "",
             value: "",
             wage: "",
@@ -72,6 +92,10 @@ export default {
                 'Nationality': this.nationality,
                 'Overall': this.overall,
                 'Potential': this.potential,
+                'Agility': this.agility,
+                'Acceleration': this.acceleration,
+                'Dribbling': this.dribbling,
+                'Finishing': this.finishing,
                 'Club': this.club,
                 'Value': this.value,
                 'Wage': this.wage
