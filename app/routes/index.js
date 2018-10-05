@@ -1,4 +1,5 @@
-const nano = require('nano')('http://localhost:5984')
+const { DB_URL } = process.env
+const nano = require('nano')(DB_URL)
 const playersDb = nano.use("players");
 
 const playerController = require('../controllers/player-controller')(playersDb)
